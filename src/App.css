@@ -1,97 +1,129 @@
-.card-img-top{
-  height: 50%;
- width: 40%;
- 
+
+.card-img-top {
+  height: auto; 
+  width: 100%; 
 }
-.card{
+
+.card {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin: 20px;
-  height: 70vh;
+  height: auto; 
+  max-height: 70vh; 
 }
 
-.list{
+.list {
   display: flex;
   flex-wrap: wrap;
- 
- 
- 
-  
+  gap: 20px; 
 }
-.main{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
 
-  
-}
-.detail-sec{
-  
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  text-align: center;
+  padding: 10px; 
 }
 
-.detail-sec-body img{
-  width: 40vw;
-  height: 50vh;
-  
+.detail-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
 }
 
-.detail-sec-body{
+.detail-sec-body img {
+  width: 100%; 
+  height: auto; 
+}
+
+.detail-sec-body {
   border: 2px dotted skyblue;
   padding: 20px;
+  margin: 10px; 
 }
 
 
-
-.navabar{
+.navabar {
   background-color: rgb(24, 26, 24);
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  
-
+ 
 }
 
-.navabar button{
-  margin: 10px;
-  
+.navabar button {
+  margin: 5px; 
+  height: 50px;
 }
 
 
-.nav-search input{
-  width: 90%;
-  margin: 15px 10px;
+.nav-search input {
+  width: 90%; 
+  margin: 10px 0; 
   border: none;
   outline: none;
-  padding: 5px;
+  padding: 10px; 
   border-radius: 1rem;
 }
 
-.enroll-sec-body img{
-  width: 40vw;
-  height: 50vh;
+
+.enroll-sec-body img {
+  width: 100%; 
+  height: auto; 
 }
 
-
-.enroll-sec-body label{
-  font-size: 1.5rem;
+.enroll-sec-body label {
+  font-size: 1rem; 
   color: rgb(188, 207, 18);
   margin-right: 5px;
 }
 
-
-.enroll-sec-body{
+.enroll-sec-body {
   border: 2px dotted skyblue;
   padding: 20px;
   background-color: darkolivegreen;
-  margin: 15px;
-  width: 70vw;
+  margin: 10px; 
+  width: 90%; 
+  max-width: 800px; 
 }
 
-.complete{
+
+.complete {
   background-color: grey;
 }
 
+
+@media (max-width: 1200px) {
+  .card, .enroll-sec-body {
+    width: 90%; 
+  }
+
+  .main, .detail-sec {
+    margin: 5px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .card-img-top, .detail-sec-body img, .enroll-sec-body img {
+    width: 100%; 
+  }
+
+  .navabar {
+    flex-direction: column; 
+  }
+
+  .navabar button {
+    margin: 5px 0; 
+}
+
+@media (max-width: 480px) {
+  .detail-sec-body, .enroll-sec-body {
+    padding: 10px; 
+  }
+
+  .nav-search input {
+    padding: 8px; 
+  }
+}
+}

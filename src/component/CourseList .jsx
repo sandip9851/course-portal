@@ -1,8 +1,9 @@
+//hero section
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setDetails } from "../storage/detailsSlice";
 import { Link } from "react-router-dom";
-import { setEnrolled } from "../storage/enroll"; 
+import { setEnrolled } from "../storage/enroll";
 
 const CourseList = ({ searchResults }) => {
   const dispatch = useDispatch();
@@ -10,12 +11,13 @@ const CourseList = ({ searchResults }) => {
   const courses = useSelector((state) => state.course.courses);
   const users = useSelector((state) => state.user.user);
 
+  //course details sended to store
   const handleDetails = (id) => {
     const detailsData = courses.find((item) => item.id === id);
-
-    
     detailDispatch(setDetails([detailsData]));
   };
+
+  //handeled enroll button and save enrolled course details in a store
 
   const handleEnroll = (course) => {
     if (!users.length > 0) {
@@ -24,6 +26,8 @@ const CourseList = ({ searchResults }) => {
     }
     dispatch(setEnrolled(course));
   };
+
+  //global ui render function of a hero section
 
   const renderCourses = (coursesToRender) => {
     return coursesToRender.map((course) => (
@@ -58,6 +62,7 @@ const CourseList = ({ searchResults }) => {
   };
 
   return (
+    /*based to searched input ui will render (searchResult hold the value of user input) */
     <div className="list">
       {searchResults !== null
         ? renderCourses(searchResults)

@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 
 function UserDetails() {
   const [completedCourses, setCompletedCourses] = useState([]);
-  const users = useSelector((state) => state.user.user);
-  const enrolledCourses = useSelector((state) => state.enroll.enrolled);
+  const users = useSelector((state) => state.user.user); //user details taking from redux store
+  const enrolledCourses = useSelector((state) => state.enroll.enrolled); //enrolled course details taking from redux store
 
+  //handele mark as done
   const handleCompletionToggle = (courseId) => {
     if (completedCourses.includes(courseId)) {
       setCompletedCourses(completedCourses.filter((id) => id !== courseId));
@@ -17,16 +18,18 @@ function UserDetails() {
 
   return (
     <div>
+      {/*button for back to home page */}
       <Link to="/">
         <button className="btn btn-info">Home</button>
       </Link>
-
+      |{/*ui rendering of user details */}
       {users.map((item) => (
         <div key={item.id}>
           <h3>Name: {item.name}</h3>
           <h4>Email: {item.email}</h4>
         </div>
       ))}
+      {/*ui rendering of enrolled course details */}
       <div>
         {enrolledCourses.length > 0 ? (
           enrolledCourses.map((detail) => (

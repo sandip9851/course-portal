@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+//dummy data of courses
 const initialState = {
   courses: [
     {
