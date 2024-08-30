@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-function App() {
+import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Nav from './component/Nav';
+
+import CourseList from './component/CourseList ';
+
+const App = () => {
+  const [search, setSearch] = useState(null);
+  
+  const courses = useSelector((state) => state.course.courses);
+
+  const handleSearch = (value) => {
+    const filtered = courses.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
+    if (filtered.length > 0) {
+      setSearch(filtered);
+      console.log(filtered); 
+    } else {
+      setSearch(null);
+      console.log('No matching courses found');
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main'>
+      
+      <Nav handleSearch={handleSearch}   />
+      <h1>Course Dashboard</h1>
+      <CourseList searchResults={search}  />
     </div>
   );
-}
+};
 
 export default App;
